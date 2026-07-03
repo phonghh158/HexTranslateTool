@@ -1,0 +1,22 @@
+# Bỏ qua thư mục chứa thư viện
+node_modules/
+
+# Bỏ qua file cấu hình môi trường (Bảo mật API Key, Port...)
+.env
+
+# Bỏ qua các file log của hệ thống và npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+
+# Bỏ qua các file rác của hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Bỏ qua thư mục build hoặc coverage (nếu sau này có dùng)
+dist/
+build/
+coverage/
+.nyc_output/
