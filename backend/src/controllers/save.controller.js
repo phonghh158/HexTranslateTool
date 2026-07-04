@@ -4,9 +4,14 @@ const saveService = require("../services/save.service");
 // Hàm xử lý yêu cầu đóng gói và lưu file binary (.dat)
 async function saveFile(req, res) {
     try {
-        const { folderPath, fileName, bufferData } = req.body;
+        const { folderPath, fileName, originalBuffer, translations } = req.body;
 
-        const savedPath = await saveService.saveFile(folderPath, fileName, bufferData);
+        const savedPath = await saveService.saveFile(
+            folderPath,
+            fileName,
+            originalBuffer,
+            translations,
+        );
 
         return success(res, { savedPath }, "Đóng gói và lưu file thành công!", 200);
     } catch (err) {

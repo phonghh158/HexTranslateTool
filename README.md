@@ -1,56 +1,48 @@
-# Doraemon Story of Seasons - Translation Hex Tool (Backend)
+# 🌸 Doraemon Studio - Trình Biên Dịch Binary, Hex Translator
 
-Đây là máy chủ xử lý dữ liệu (Backend) cho công cụ dịch thuật và đóng gói file binary của game Doraemon Story of Seasons.
+# 👨‍💻 Tác giả: Hoàng Hồng Phong
 
-## 🛠 Cấu trúc công nghệ
+Doraemon Studio là một công cụ hỗ trợ dịch thuật trực tiếp các tệp dữ liệu nhị phân (`.dat`, `.bytes`, `.bin`). Phần mềm cung cấp giao diện trực quan, tự động tính toán giới hạn dung lượng byte, hỗ trợ dịch máy qua Google Translate API và đóng gói tệp tin mà không làm hỏng cấu trúc gốc của dữ liệu.
 
-- **Môi trường:** Node.js
-- **Framework:** Express.js
-- **Dịch vụ:** Google Translate API, Gemini AI (tùy chọn)
-- **Kiến trúc:** MVC (Routes, Controllers, Services)
+## 🛠 Yêu cầu hệ thống (Prerequisites)
 
-## ⚙️ Yêu cầu hệ thống
+Để khởi chạy được phần mềm này, máy tính của bạn bắt buộc phải cài đặt **Node.js**.
 
-- Node.js (phiên bản 14 trở lên)
-- npm
+- **Tải Node.js tại đây:** [https://nodejs.org](https://nodejs.org/) (Khuyến nghị tải phiên bản **LTS - Recommended for Most Users**).
+- Trình duyệt web hiện đại (Chrome, Edge, Firefox,...).
 
-## 🚀 Hướng dẫn cài đặt và khởi chạy
+## 🚀 Hướng dẫn cài đặt và sử dụng
 
-**Bước 1: Cài đặt thư viện**
-Mở Terminal tại thư mục backend và chạy lệnh:
-\`\`\`bash
-npm install
-\`\`\`
+1. **Tải mã nguồn:** Tải toàn bộ thư mục dự án này về máy tính của bạn và giải nén (nếu tải dưới dạng `.zip`).
+2. **Khởi chạy phần mềm:** - Tìm đến thư mục gốc của dự án.
+    - Click đúp chuột vào file **`RUN_TOOL.bat`**.
+3. **Cài đặt tự động (Dành cho lần chạy đầu tiên):** - Trong lần đầu khởi chạy, hệ thống sẽ tự động tải các thư viện cần thiết (có thể mất khoảng 1-2 phút tùy tốc độ mạng).
+    - Vui lòng không tắt cửa sổ CMD màu đen trong quá trình này.
+4. **Bắt đầu dịch thuật:** - Sau khi khởi động xong, trình duyệt web sẽ tự động mở trang `http://localhost:3333`.
+    - Nhấn **Mở File Gốc (.dat)** để nạp dữ liệu và bắt đầu công việc.
 
-**Bước 2: Cấu hình biến môi trường**
+## 📂 Cấu trúc dự án
 
-1. Tạo một file tên là `.env` ở thư mục gốc của backend.
-2. Thiết lập các thông số sau (có thể tham khảo file `.env.example` nếu có):
-   \`\`\`env
-   PORT=3333
-   CLIENT_URL=http://localhost:5555
+```text
+/DoraemonStudio
+├── /backend            # Chứa mã nguồn Server (Node.js, Express)
+│   ├── /src            # Các cấu hình trung gian (CORS, Middlewares)
+│   ├── /routes         # API điều hướng (Google Translate, Save File)
+│   ├── .env            # Cấu hình biến môi trường (PORT)
+│   └── server.js       # File khởi động chính
+├── /frontend           # Giao diện người dùng (HTML, CSS, JS thuần)
+│   ├── /css
+│   ├── /js
+│   └── index.html
+├── Start_Doraemon.bat  # File khởi chạy nhanh (1-click)
+└── README.md           # Tài liệu hướng dẫn
+```
 
-# GEMINI_API_KEY=your_api_key_here
+## ⚙️ Tính năng nổi bật
 
-\`\`\`
+- Giao diện thân thiện: Hỗ trợ Dark Mode/Light Mode, thanh tiến độ dịch thuật theo thời gian thực.
+- Kiểm soát dung lượng Byte: Tự động đếm và cảnh báo khi chuỗi dịch vượt quá số lượng byte cho phép của bộ nhớ nhị phân gốc.
+- Dịch máy tự động: Tích hợp gọi API Google Translate để dịch nhanh từng dòng thoại.
+- Lưu bản nháp: Hỗ trợ xuất và nhập tiến độ làm việc dưới dạng file .json.
 
-**Bước 3: Khởi chạy máy chủ**
-Chạy lệnh sau để bật server với chế độ tự động cập nhật khi sửa code:
-\`\`\`bash
-npm run dev
-
-# hoặc: nodemon server.js
-
-\`\`\`
-Máy chủ sẽ chạy tại địa chỉ: `http://localhost:3333`
-
-## 🔗 Danh sách API cơ bản
-
-- `GET /health` - Kiểm tra trạng thái máy chủ.
-- `POST /api/translate/google` - Dịch văn bản tự động qua Google Translate.
-- `POST /api/save` - Đóng gói và lưu dữ liệu hex xuống file.
-
-## ⚠️ Lưu ý
-
-- Client (Frontend) được cấu hình chạy ở cổng `5555`.
-- File `.env` chứa các khóa bảo mật nên đã được đưa vào `.gitignore`, tuyệt đối không commit file này lên public repository.
+## Lưu ý: Không tắt cửa sổ Terminal/CMD trong suốt quá trình sử dụng phần mềm. Khi muốn đóng phần mềm, chỉ cần đóng cửa sổ Terminal.

@@ -6,6 +6,6 @@ const saveRoute = require("./save.route");
 
 // Auto Translate Routes
 router.use("/translate", translateRoute);
-route.use("/save", saveRoute);
+router.use("/save", saveRoute);
 
 module.exports = router;

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Doraemon Studio - Trình Biên Dịch Binary</title>
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="logo">🌸</span>
+                <div>
+                    <h2>Doraemon Studio</h2>
+                    <div class="subtitle">Trình Biên Dịch Binary</div>
+                </div>
+            </div>
+
+            <div class="sidebar-body">
+                <div class="section">
+                    <h3 class="section-title">Quản lý File</h3>
+                    <input type="file" id="fileInput" class="input-file" accept=".dat,.bytes" />
+                    <button
+                        class="btn btn-primary"
+                        onclick="document.getElementById('fileInput').click()"
+                    >
+                        <span>📁</span> Mở File Gốc (.dat)
+                    </button>
+
+                    <input type="file" id="fileJsonInput" class="input-file" accept=".json" />
+                    <button
+                        class="btn btn-secondary"
+                        onclick="document.getElementById('fileJsonInput').click()"
+                    >
+                        <span>📄</span> Mở File Nháp (.json)
+                    </button>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Cấu hình Dịch</h3>
+                    <div class="lang-select-group">
+                        <select id="sourceLang" class="form-control">
+                            <option value="en" data-name="Tiếng Anh" selected>Tiếng Anh</option>
+                            <option value="vi" data-name="Tiếng Việt">Tiếng Việt</option>
+                            <option value="de" data-name="Tiếng Đức">Tiếng Đức</option>
+                            <option value="ko" data-name="Tiếng Hàn">Tiếng Hàn</option>
+                            <option value="ja" data-name="Tiếng Nhật">Tiếng Nhật</option>
+                            <option value="zh-cn" data-name="Tiếng Trung">Tiếng Trung</option>
+                            <option value="th" data-name="Tiếng Thái">Tiếng Thái</option>
+                        </select>
+                        <span class="arrow-icon">
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </span>
+                        <select id="targetLang" class="form-control">
+                            <option value="vi" data-name="Tiếng Việt">Tiếng Việt</option>
+                            <option value="en" data-name="Tiếng Anh">Tiếng Anh</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-color); margin: 10px 0"></div>
+
+                <div class="section">
+                    <h3 class="section-title">Xuất Dữ Liệu</h3>
+                    <input
+                        type="text"
+                        id="exportPath"
+                        class="form-control"
+                        placeholder="Dán đường dẫn lưu file..."
+                    />
+                    <button id="btnSaveDraft" class="btn btn-secondary" disabled>
+                        <span>💾</span> Lưu Bản Nháp
+                    </button>
+                    <button id="btnSave" class="btn btn-primary" disabled>
+                        <span>📦</span> Đóng Gói File (.dat)
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-wrapper">
+                    <span>🔍</span>
+                    <input
+                        type="text"
+                        id="searchBox"
+                        class="search-input"
+                        placeholder="Tìm kiếm văn bản..."
+                    />
+                </div>
+
+                <div class="topbar-right">
+                    <div class="progress-container">
+                        <div class="progress-text">
+                            <span class="label"
+                                >Tiến độ: <span id="translatedCount">0</span>/<span
+                                    id="totalCount"
+                                    >0</span
+                                >
+                                câu</span
+                            >
+                            <span class="percent" id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <button
+                        id="themeToggle"
+                        class="btn-icon-circle"
+                        title="Chuyển đổi giao diện"
+                    >
+                        ☀️
+                    </button>
+                </div>
+            </header>
+
+            <div class="table-area">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="col-stt">STT</th>
+                                <th class="col-offset">Offset</th>
+                                <th class="col-text">Bản gốc</th>
+                                <th class="col-action">Dịch</th>
+                                <th class="col-text">Bản dịch</th>
+                                <th class="col-status">Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <tr id="emptyState">
+                                <td colspan="6" class="empty-state">
+                                    Vui lòng mở file gốc (.dat) hoặc bản nháp (.json) để bắt đầu
+                                    dịch.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,499 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    --bg-color: #fff5f5;
+    --panel-color: #ffffff;
+    --text-main: #4a3737;
+    --text-muted: #8a7474;
+    --border-color: #f0e2e2;
+    --primary-color: #ffb7b7;
+    --primary-hover: #ff9e9e;
+    --primary-text: #612121;
+    --secondary-bg: #fff0f0;
+    --secondary-hover: #ffe4e4;
+    --error-bg: #ffebeb;
+    --error-border: #ffc1c1;
+    --error-text: #991b1b;
+    --success-text: #166534;
+    --textarea-text: #4a3737;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1e1e1e;
+    --panel-color: #252526;
+    --text-main: #d4d4d4;
+    --text-muted: #858585;
+    --border-color: #3c3c3c;
+
+    --primary-color: #ff8080;
+    --primary-hover: #ff8686;
+    --primary-text: #1e1e1e;
+
+    --secondary-bg: #2d2d30;
+    --secondary-hover: #3e3e42;
+
+    --error-bg: rgba(241, 76, 76, 0.1);
+    --error-border: #f14c4c;
+    --error-text: #f14c4c;
+
+    --success-text: #89d185;
+    --textarea-text: #f1f5f9; /* Màu trắng dịu rõ nét cho bản tối */
+}
+
+body {
+    font-family: "Google Sans", "Noto Sans", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    transition:
+        background-color 0.3s,
+        color 0.3s;
+}
+
+/* --- LAYOUT CHÍNH --- */
+.sidebar {
+    width: 288px;
+    background-color: var(--panel-color);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+/* --- SIDEBAR COMPONENTS --- */
+.sidebar-header {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header .logo {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.sidebar-header .subtitle {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.sidebar-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 10px 0;
+    letter-spacing: 0.05em;
+}
+
+.input-file {
+    display: none;
+}
+
+.btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.btn:last-child {
+    margin-bottom: 0;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--primary-text);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: var(--secondary-hover);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.lang-select-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.form-control {
+    flex: 1;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 12px;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    outline: none;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+}
+
+.arrow-icon {
+    color: var(--text-muted);
+    cursor: default;
+    user-select: none;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* --- MAIN CONTENT COMPONENTS --- */
+.topbar {
+    height: 64px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--panel-color);
+    border-bottom: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 6px 12px;
+    width: 300px;
+}
+
+.search-wrapper:focus-within {
+    border-color: var(--primary-color);
+}
+
+.search-wrapper span {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 14px;
+    width: 100%;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 176px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.progress-text .label {
+    color: var(--text-muted);
+}
+
+.progress-text .percent {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.progress-bar {
+    height: 6px;
+    width: 100%;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.btn-icon-circle {
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+}
+
+.btn-icon-circle:hover {
+    background-color: var(--secondary-hover);
+}
+
+/* --- TABLE COMPONENTS --- */
+.table-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+.table-wrapper {
+    background-color: var(--panel-color);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+thead th {
+    background-color: var(--secondary-bg);
+    padding: 14px 16px;
+    font-weight: 600;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Chia tỷ lệ phần trăm chuẩn xác tuyệt đối */
+th.col-stt {
+    width: 4%;
+    text-align: center;
+}
+th.col-offset {
+    width: 8%;
+    text-align: center;
+}
+th.col-text {
+    width: 37%;
+}
+th.col-action {
+    width: 4%;
+    text-align: center;
+}
+th.col-status {
+    width: 10%;
+    text-align: center;
+}
+
+tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle; /* Căn giữa nội dung theo chiều dọc */
+    box-sizing: border-box;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Style khi hàng bị lỗi dung lượng */
+tr.row-error td {
+    background-color: var(--error-bg);
+}
+tr.row-error .textarea-translate {
+    border-color: var(--error-border);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 64px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Textarea cân bằng và bằng nhau tuyệt đối */
+.textarea-box {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    padding: 10px 12px;
+    font-size: 16px;
+    font-family: Consolas, "Courier New", monospace;
+    resize: none;
+    outline: none;
+    box-sizing: border-box;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+    height: 64px;
+    display: block;
+}
+
+.textarea-original {
+    background-color: var(--secondary-bg);
+    color: var(--textarea-text);
+    cursor: default;
+    opacity: 0.85;
+}
+
+.textarea-translate {
+    background-color: var(--bg-color);
+    color: var(--textarea-text);
+}
+
+.textarea-translate:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgb(from var(--primary-color) r g b / 0.2);
+}
+
+/* Nút dịch Google nằm chính giữa ô */
+.btn-translate {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.btn-translate:hover:not(:disabled) {
+    background-color: var(--secondary-hover);
+    border-color: rgb(from var(--primary-color) r g b / 0.5);
+}
+
+.btn-translate:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* CSS cho vòng xoay loading khi đang dịch */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--primary-color);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.status-box {
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.status-box.untranslated {
+    color: var(--text-muted);
+}
+.status-box.valid {
+    color: var(--success-text);
+}
+.status-box.error {
+    color: var(--error-text);
+    font-weight: 600;
+}
+
+.status-badge {
+    font-size: 10px;
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 4px;
+    font-weight: 600;
+}
+.badge-error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+}
+.badge-valid {
+    background-color: var(--secondary-bg);
+    color: var(--text-muted);
+}
