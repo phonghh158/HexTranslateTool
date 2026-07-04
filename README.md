@@ -1,6 +1,6 @@
 # 🌸 Doraemon Studio - Trình Biên Dịch Binary, Hex Translator
 
-# 👨‍💻 Tác giả: Hoàng Hồng Phong
+### 👨‍💻 Tác giả: Hoàng Hồng Phong
 
 Doraemon Studio là một công cụ hỗ trợ dịch thuật trực tiếp các tệp dữ liệu nhị phân (`.dat`, `.bytes`, `.bin`). Phần mềm cung cấp giao diện trực quan, tự động tính toán giới hạn dung lượng byte, hỗ trợ dịch máy qua Google Translate API và đóng gói tệp tin mà không làm hỏng cấu trúc gốc của dữ liệu.
 
@@ -45,4 +45,4 @@ Doraemon Studio là một công cụ hỗ trợ dịch thuật trực tiếp cá
 - Dịch máy tự động: Tích hợp gọi API Google Translate để dịch nhanh từng dòng thoại.
 - Lưu bản nháp: Hỗ trợ xuất và nhập tiến độ làm việc dưới dạng file .json.
 
-## Lưu ý: Không tắt cửa sổ Terminal/CMD trong suốt quá trình sử dụng phần mềm. Khi muốn đóng phần mềm, chỉ cần đóng cửa sổ Terminal.
+### Lưu ý: Không tắt cửa sổ Terminal/CMD trong suốt quá trình sử dụng phần mềm. Khi muốn đóng phần mềm, chỉ cần đóng cửa sổ Terminal.
